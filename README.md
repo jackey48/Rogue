@@ -4,3 +4,5 @@
 May 11th - Prototype Done <p>
 UML - Done with the prototype <p>
 May 13th - Main Algorithms found <p>
+Testing - Try all our Algorithms
+
