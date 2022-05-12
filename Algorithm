@@ -58,3 +58,13 @@ public String getName(){
     }
   }
 }
+
+import java.awt.Graphics2D;
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        Graphics2D gfx = (Graphics2D)jPanel1.getGraphics();
+        gfx.drawGraphic(0,0,10,10);
+        //Every tile is 10 x 10 units
+ 
+    }  
+
