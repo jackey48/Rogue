@@ -1,0 +1,60 @@
+class Stats {
+  Random rand = new Random();
+  Scanner in = new Scanner(System.in);
+  String name;
+  int maxHealth;
+  int currentHealth;
+  int defence;
+  int attack;
+  
+  public Stats(String n, int mh, int d, int a) {
+    name = n;
+    maxHealth = mh;
+    currentHealth = maxHealth;
+    defence = d;
+    attack = a;
+  }
+
+public String getName(){
+  return name;
+}
+  
+  public int getMaxHealth() {
+    return maxHealth;
+  }
+
+  public int getCurrentHealth() {
+    return currentHealth;
+  }
+  
+  public int getDefence() {
+    return defence;
+  }
+
+  public int getAttack() {
+    return attack;
+  }
+
+  public int attack() {
+    int max = (int)(attack * 1.2);
+    int min = (int)(attack * 0.8);
+    if (rand.nextInt(20) == 0) {
+      System.out.print("Critical Hit!");
+      return 2*(rand.nextInt(max - min) + min);
+    }
+    else {
+      return rand.nextInt(max - min) + min;
+    }
+  }
+  
+  public void damaged(int d) {
+    int damage = d;
+    if (damage > defence) { 
+      System.out.println(getName()+" takes "+(damage-defence)+" damage!");
+      currentHealth -= (damage - defence);
+    }
+    else{
+      System.out.println(getName()+" takes no damage!");
+    }
+  }
+}
