@@ -59,6 +59,7 @@ public String getName(){
   }
 }
 
+//Graphics 1, failed
 import java.awt.Graphics2D;
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
@@ -68,3 +69,32 @@ import java.awt.Graphics2D;
  
     }  
 
+//Graphics 2, succeeded
+//Includes working action
+public class GameUI extends javax.swing.JFrame {
+    Graphics g;
+    Action UpAction;
+    /**
+     * Creates new form GameUI
+     */
+    public GameUI() {
+        initComponents();
+        
+        //Setting Graphics
+        g = jPanel1.getGraphics();
+        jPanel1.paintComponents(g);
+        
+        //Creating Key Binds
+        UpAction = new UpAction();
+        
+        jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
+        jPanel1.getActionMap().put("upAction", UpAction);
+        
+    }
+    public class UpAction extends AbstractAction{
+        
+        @Override
+        public void actionPerformed(ActionEvent e){
+            g.drawRect(0,0,10,20);
+        }
+    }
