@@ -98,3 +98,26 @@ public class GameUI extends javax.swing.JFrame {
             g.drawRect(0,0,10,20);
         }
     }
+
+//Translating Positions on 2D array
+class Main {
+public static void main(String[] args){
+  int coord = 0;
+  int[][] map = new int[20][20];
+  for (int row = 0; row < map.length; row++)
+  {
+	  for (int col = 0; col < map[row].length; col++)
+    {
+      	map[row][col] = coord;
+        coord += 10;
+    }
+  }
+  int test;
+  System.out.println(map[5][10]);
+  test = map[5][10]%200;
+  System.out.println(test + " Is X");
+  test = (map[5][10] - test)/20;
+  System.out.println(test + " Is Y");
+  
+}
+}
