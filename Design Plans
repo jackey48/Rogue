@@ -22,4 +22,9 @@ On key press right{
   //Read by position 2D array as [1][0]
   paint player at position #,0 with size # x #
   repaint player at 0,0 with nothing
+  
+  //2D arrays can only be read as whole number, equation to seperate x and y coordinates found
+  %200 gives x coordinates, removing x then /200 gives y coordinates
+  
+
 }
