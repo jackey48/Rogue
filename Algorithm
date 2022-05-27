@@ -121,3 +121,27 @@ public static void main(String[] args){
   
 }
 }
+//Fixed Position calculator (Now works with varying and non symmetrical widths and lengths)
+class Main {
+public static void main(String[] args){
+  int coord = 0;
+  int length = 20;
+  int width = 20;
+  int[][] map = new int[length][width];
+  for (int row = 0; row < map.length; row++)
+  {
+	  for (int col = 0; col < map[row].length; col++)
+    {
+      	map[row][col] = coord;
+        coord += 10;
+    }
+  }
+  int test;
+  System.out.println(map[5][10]);
+  test = map[5][10]%(width*10);
+  System.out.println(test + " Is X");
+  test = (map[5][10] - test)/(width);
+  System.out.println(test + " Is Y");
+  
+}
+}
