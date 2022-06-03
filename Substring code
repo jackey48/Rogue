@@ -1,0 +1,6 @@
+reader = new BufferedReader(new FileReader("map1player.txt"));
+            for (int i = 0; i <= (playerY + y); i ++) {
+                oldString = reader.readLine();
+            }
+            reader.close();
+            newString = oldString.substring(0,(playerX + x))+'o'+oldString.substring(playerX + x + 1);
