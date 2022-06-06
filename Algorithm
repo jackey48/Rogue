@@ -146,3 +146,11 @@ public static void main(String[] args){
 }
 }
 
+reader = new BufferedReader(new FileReader("map1player.txt"));
+//Reads lines down equal to the players Y to find its strip of tiles
+            for (int i = 0; i <= (playerY + y); i ++) {
+                oldString = reader.readLine();
+            }
+            reader.close();
+	    //Creates a new string which replaces the tile over the player with 'o' which is open, removing the encounter until readded later
+            newString = oldString.substring(0,(playerX + x))+'o'+oldString.substring(playerX + x + 1);
