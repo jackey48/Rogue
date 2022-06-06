@@ -28,3 +28,8 @@ On key press right{
   
 
 }
+
+Inventory functions as a 2D array containing strings that are the items, string contains two substrings, one of it's name and one of it's bonus
+Program parses for second part when reevaluating stats. Clicking on a radio button checks whether its a sword or armour then changes the values appropriately.
+Armour and weapons are tied to a value in the array so it knows where to look.
+
