@@ -1,5 +1,6 @@
 # Rogue
-2022 ICS4U Final Project by Matthew Sullivan and Ka Hei Chan
+2022 ICS4U Final Project by Matthew Sullivan and Ka Hei Chan <p>
+Early Schedule for getting started
 
 May 11th - Prototype Done <p>
 UML - Done with the prototype <p>
