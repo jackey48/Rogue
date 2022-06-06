@@ -155,3 +155,91 @@ reader = new BufferedReader(new FileReader("map1player.txt"));
 	    //Create new string replacing players tile with 'o' for open
             newString = oldString.substring(0,(playerX + x))+'o'+oldString.substring(playerX + x + 1);
 	    
+// What happens when you move	    
+jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
+        jPanel1.getActionMap().put("upAction", UpAction);
+	
+    public class UpAction extends AbstractAction{
+        
+        @Override
+        public void actionPerformed(ActionEvent e){
+            char tileColour = events.mapReader(CoordsX, CoordsY-1);
+            int mapValue = map[player.positionY][player.positionX];
+            if (combat == false) {
+                switch (tileColour) {
+                    case('W'):
+                        g.setColor(Color.black);
+                        g.fillRect(player.getX(mapValue),player.getY(mapValue,player.getX(mapValue))-10,10,10);
+                        break;
+                    case('o'):
+                        g.setColor(Color.green);
+                        g.fillRect(player.getX(mapValue),player.getY(mapValue,player.getX(mapValue)),10,10);
+                        CoordsY--;
+                        player.setPosY(CoordsY);
+                        mapValue = map[player.positionY][player.positionX];
+                        g.setColor(Color.gray);
+                        g.fillRect(player.getX(mapValue),player.getY(mapValue,player.getX(mapValue)),10,10);
+                        break;
+                    case('k'):
+                        g.setColor(Color.red);
+                        g.fillRect(player.getX(mapValue),player.getY(mapValue,player.getX(mapValue))-10,10,10);
+                        bad1.generateStats(player.getLevel());
+                        combat = true;
+                        combatX = 0;
+                        combatY = -1;
+                        eventTextBox.append("You encounter an enemy! \n");
+                        updateUI();
+                        break;
+                    case('t'): 
+                        g.setColor(Color.yellow);
+                        g.fillRect(player.getX(mapValue),player.getY(mapValue,player.getX(mapValue))+10,10,10);
+                        in.addItem("Sword", "+2 ATT");
+                        events.mapLineReplacer(0, -1, CoordsX, CoordsY);
+                        updateUI();
+                } 
+            }
+        }
+    }
+    
+    //Takes offset position and players actual position
+    public void mapLineReplacer(int x, int y, int playerX, int playerY) {
+        String oldString = "";
+        String newString = "";
+        String oldContent = "";
+        BufferedReader reader = null;
+        FileWriter writer = null;
+        try { 
+            reader = new BufferedReader(new FileReader("map1player.txt"));
+            for (int i = 0; i <= (playerY + y); i ++) {
+                oldString = reader.readLine();
+            }
+            reader.close();
+            newString = oldString.substring(0,(playerX + x))+'o'+oldString.substring(playerX + x + 1);
+            //Reading all the lines of input text file into oldContent
+            reader = new BufferedReader(new FileReader("map1player.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+                oldContent = oldContent + line + System.lineSeparator();
+            line = reader.readLine();
+            }
+            //Replacing oldString with newString in the oldContent
+            String newContent = oldContent.replaceAll(oldString, newString);
+            //Rewriting the input text file with newContent
+            writer = new FileWriter("map1player.txt");
+            writer.write(newContent);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                //Closing the resources
+                reader.close();
+                writer.close();
+            } 
+            catch (IOException e)  {
+                e.printStackTrace();
+            }
+        }
+    }  
+}
