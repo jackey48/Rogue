@@ -154,3 +154,4 @@ reader = new BufferedReader(new FileReader("map1player.txt"));
             reader.close();
 	    //Create new string replacing players tile with 'o' for open
             newString = oldString.substring(0,(playerX + x))+'o'+oldString.substring(playerX + x + 1);
+	    
