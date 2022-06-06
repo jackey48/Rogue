@@ -11,5 +11,5 @@ Folders contain the builds top down as they were submitted. Movement build is ve
 
  Algorithms contain code intended to be used in the program while Design Ideas contained the end concept we wanted and what systems we could have used to make it.
   
-  // Contained useful ideas but ultimately not what were looking for
+  // Contained useful ideas but ultimately not what were looking for<p>
 https://jellepelgrims.com/posts/roguelike_java
