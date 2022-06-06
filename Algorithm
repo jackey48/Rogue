@@ -166,6 +166,13 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
             char tileColour = events.mapReader(CoordsX, CoordsY-1);
             int mapValue = map[player.positionY][player.positionX];
             if (combat == false) {
+	    //Tile reading section, reads map text file and depending on the letter, determines its tile
+	    \*
+	    W = walls
+	    o = open
+	    k = enemy
+	    t = treasure
+	    */
                 switch (tileColour) {
                     case('W'):
                         g.setColor(Color.black);
@@ -201,45 +208,3 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
         }
     }
     
-    //Takes offset position and players actual position
-    public void mapLineReplacer(int x, int y, int playerX, int playerY) {
-        String oldString = "";
-        String newString = "";
-        String oldContent = "";
-        BufferedReader reader = null;
-        FileWriter writer = null;
-        try { 
-            reader = new BufferedReader(new FileReader("map1player.txt"));
-            for (int i = 0; i <= (playerY + y); i ++) {
-                oldString = reader.readLine();
-            }
-            reader.close();
-            newString = oldString.substring(0,(playerX + x))+'o'+oldString.substring(playerX + x + 1);
-            //Reading all the lines of input text file into oldContent
-            reader = new BufferedReader(new FileReader("map1player.txt"));
-            String line = reader.readLine();
-            while (line != null) {
-                oldContent = oldContent + line + System.lineSeparator();
-            line = reader.readLine();
-            }
-            //Replacing oldString with newString in the oldContent
-            String newContent = oldContent.replaceAll(oldString, newString);
-            //Rewriting the input text file with newContent
-            writer = new FileWriter("map1player.txt");
-            writer.write(newContent);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                //Closing the resources
-                reader.close();
-                writer.close();
-            } 
-            catch (IOException e)  {
-                e.printStackTrace();
-            }
-        }
-    }  
-}
