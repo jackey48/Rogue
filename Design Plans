@@ -35,4 +35,19 @@ Armour and weapons are tied to a value in the array so it knows where to look.
 
 
 Current Matthew Task: Checking the 8 tiles around the player and printing them by finding their symbol in the text file map and useing that to determine 
-what colour to draw
+what colour to draw. Using nested for loop, checks coordinates around players current location and prints their assigned colour.
+
+Current Ka Hei Task: Creating and differenciating enemy types. Generating enemies can be done thorugh a random number generator and depending on the number
+given, it generates that enemy. Fixing combat loop/creating a real combat loop is required as current combat is dependant on specifically one enemy object being fought.
+Combat loop method can check which enemy is fought before combat starts.
+
+int i is given
+if(1)
+enemy = there
+
+bad1.actionChoose()
+
+else if (2)
+elite
+else if (3)
+boss
