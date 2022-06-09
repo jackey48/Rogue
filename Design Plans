@@ -41,13 +41,6 @@ Current Ka Hei Task: Creating and differenciating enemy types. Generating enemie
 given, it generates that enemy. Fixing combat loop/creating a real combat loop is required as current combat is dependant on specifically one enemy object being fought.
 Combat loop method can check which enemy is fought before combat starts.
 
-int i is given
-if(1)
-enemy = there
-
-bad1.actionChoose()
-
-else if (2)
-elite
-else if (3)
-boss
+Alternate Solution: Set all attacks to functions, combat is already there so that doesn't matter. Add string array variable to each enemy containing values for
+valid attacks they can use. Run a random number generator equal to array size then take string value into switch statement containing every attack. Allows multiple enemies
+to use the same attacks with little issue. Similar array can be used to status conditions and immunities. 
