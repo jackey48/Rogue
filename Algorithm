@@ -374,4 +374,26 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
     }
 }
 
+//Checks status effects with both starting as false.
+//Applied to stats class so both enemies and player has independent version of the it
+Boolean[] statusEffect = {false, false}
+public void statusCheck(PlayerStats player, Events events, javax.swing.JTextArea eventTextBox) {
+    for (int i = 0; i < 2; i++){
+        if (statusEffect[i] == true){
+            switch(i){
+                case 0:
+                    buff = (int)(attack * 0.3);
+                    if (buff < 0) {
+                        buff = 1;
+                    }   
+                    break;
+                case 1:
+                    temp = player.currentHealth;
+                    loseHealth((int)(maxHealth * 0.02 + 0.6));
+                    eventTextBox.append(name +" is on fire and takes "+(temp - player.getCurrentHealth())+" damage! \n");
+                    break;
+            }      
+            }
+        }
+    }
     
