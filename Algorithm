@@ -207,28 +207,30 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
             }
         }
     }
-    
+   
+    //Updated Enemy class v.1
     public class EnemyStats extends Stats{
     Random rand = new Random();
     int expValue;
     int CR;
     String[] moveList;
-
     
     public EnemyStats(String n, int mh, int d, int a) {
         super(n, mh, d, a);
      }
-    
+    //Never used but could be useful
     public int getExpValue() {
         return expValue;
     }
     
     public void generateLesserEnemyType(int level){
         CR = level;
+	//Generates random number for random enemy
         int enemyIndex = (int)(Math.random()*(3 - 1 + 1) + 1);
         enemyIndex = 2;
         switch (enemyIndex) {
             case 1:
+	    //changes current enemy stats to that of Moblin
                 generateMoblin();
                 break;
             case 2:  
@@ -249,6 +251,7 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
         name = "Moblin The Goblin";
         expValue = 12 + CR;
         String setList[] = {"a","dh"};
+	//Didn't know a better way to change the entire array
         moveList = setList;
     }
     
@@ -323,8 +326,10 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
         moveList = setList;
     }
     
+    //All possible enemy actions as functions
     public void combat(PlayerStats player, Events events, javax.swing.JTextArea eventTextBox) {
-        temp = player.currentHealth;
+        //Used to print actual damage taken
+	temp = player.currentHealth;
         player.loseHealth(events.damage(getAttack(), player.getDefence()));
         eventTextBox.append(player.getName()+" takes "+(temp - player.getCurrentHealth())+" damage! \n");
         if (player.currentHealth < 0) {
@@ -352,12 +357,14 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
         eventTextBox.append(player.getName()+" takes "+(temp - player.getCurrentHealth())+" damage! \n");
     }
     
+    //Function made to simplify actionDo code
     private String actionChoose() {
         return moveList[rand.nextInt(moveList.length)];
     }
     
     public void actionDo(PlayerStats player, Events events, javax.swing.JTextArea eventTextBox){
         switch(actionChoose()){
+	//Corresponding attack of string executed
             case "a":
                 combat(player, events, eventTextBox);
                 break;
@@ -378,6 +385,7 @@ jPanel1.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
 //Applied to stats class so both enemies and player has independent version of the it
 Boolean[] statusEffect = {false, false}
 public void statusCheck(PlayerStats player, Events events, javax.swing.JTextArea eventTextBox) {
+    //For loop checks the condition of each status effect, you can be on fire and buffed at the same time
     for (int i = 0; i < 2; i++){
         if (statusEffect[i] == true){
             switch(i){
@@ -396,9 +404,10 @@ public void statusCheck(PlayerStats player, Events events, javax.swing.JTextArea
             }
         }
     }
-    
+    	//Updated enemy types v.2
         public void generateLesserEnemyType(int level){
         CR = level;
+	//Random generator for random enemies
         int enemyIndex = (int)(Math.random()*(4 - 1 + 1) + 1);
         switch (enemyIndex) {
             case 1:
@@ -446,14 +455,20 @@ public void statusCheck(PlayerStats player, Events events, javax.swing.JTextArea
         }
     }
     
+    // v v Store of every enemy v v
+    
     private void generateMoblin(){
+    //CR = levels meaning enemies get stronger throughout the game
         maxHealth = 10 + CR;
         setCurrentHealth();
         attack = 3 + (int)(CR/2);
         defence = 1 + (int)(CR/4);
         name = "Moblin";
         expValue = 12 + CR;
+	//Made attacks full instead of initials for readability
+	//The probability can still be altered by adding the same attack multiple times
         String setList[] = {"attack","domehim"};
+	//Never found a better way to do this
         moveList = setList;
     }
     
@@ -545,6 +560,8 @@ public void statusCheck(PlayerStats player, Events events, javax.swing.JTextArea
         moveList = setList;
     }
     
+    //Store of every attack
+    //Base attack usuable by every enemy
     public void combat(PlayerStats player, Events events, javax.swing.JTextArea eventTextBox) {
         temp = player.currentHealth;
         player.loseHealth(events.damage(getAttack(), player.getDefence()));
@@ -599,6 +616,7 @@ public void statusCheck(PlayerStats player, Events events, javax.swing.JTextArea
     
     private void magicAttack(PlayerStats player, Events events, javax.swing.JTextArea eventTextBox) {
         temp = player.currentHealth;
+	//Effects of attacks can be altered, Eg. magicAttack can ignore defence
         player.loseHealth(events.damage(attack, 0));
         eventTextBox.append("The shoe takes off its shoe and beats you. \n");
         eventTextBox.append(player.getName()+" takes "+(temp - player.getCurrentHealth())+" damage! \n");
@@ -608,6 +626,7 @@ public void statusCheck(PlayerStats player, Events events, javax.swing.JTextArea
         return moveList[rand.nextInt(moveList.length)];
     }
     
+    //Still pretty small considering a considerable increase to number of attacks
     public void actionDo(PlayerStats player, Events events, javax.swing.JTextArea eventTextBox){
         switch(actionChoose()){
             case "attack":
