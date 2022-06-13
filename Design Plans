@@ -26,7 +26,31 @@ On key press right{
   //2D arrays can only be read as whole number, equation to seperate x and y coordinates found
   %200 gives x coordinates, removing x then /200 gives y coordinates
   
+}
 
+public void generate guys(int lvl) {
+maxHealth = # + lvl
+attack = # + lvl
+defence = # + lvl
+String[] attacks = {attack, axe}
+}
+Note: adding multiples of the same attack can change the probability of an attack happening
+
+public void actionDo() {
+swtich(attacks[rand.randomInt(attacks.length)]) {
+    case attack:
+        combat(attack,defence)
+        //everything in current combat function
+        break;
+    case axe: 
+        axe(attack,defence)
+        //similar
+        break;
+}
+
+private void axe(PLayerStats player, events event, java.swing txtbox){
+    player.loseHealth(attack+3, player.defence);
+    txtbox.append("Did damage");
 }
 
 Inventory functions as a 2D array containing strings that are the items, string contains two substrings, one of it's name and one of it's bonus
@@ -34,13 +58,13 @@ Program parses for second part when reevaluating stats. Clicking on a radio butt
 Armour and weapons are tied to a value in the array so it knows where to look.
 
 
-Current Matthew Task: Checking the 8 tiles around the player and printing them by finding their symbol in the text file map and useing that to determine 
-what colour to draw. Using nested for loop, checks coordinates around players current location and prints their assigned colour.
+Matthew Task: Checking the 8 tiles around the player and printing them by finding their symbol in the text file map and useing that to determine 
+what colour to draw. Using nested for loop, checks coordinates around players current location and prints their assigned colour. (Done)
 
-Current Ka Hei Task: Creating and differenciating enemy types. Generating enemies can be done thorugh a random number generator and depending on the number
+Ka Hei Task: Creating and differenciating enemy types. Generating enemies can be done thorugh a random number generator and depending on the number
 given, it generates that enemy. Fixing combat loop/creating a real combat loop is required as current combat is dependant on specifically one enemy object being fought.
 Combat loop method can check which enemy is fought before combat starts.
 
 Alternate Solution: Set all attacks to functions, combat is already there so that doesn't matter. Add string array variable to each enemy containing values for
 valid attacks they can use. Run a random number generator equal to array size then take string value into switch statement containing every attack. Allows multiple enemies
-to use the same attacks with little issue. Similar array can be used to status conditions and immunities. 
+to use the same attacks with little issue. Similar array can be used to status conditions and immunities. (Done)
