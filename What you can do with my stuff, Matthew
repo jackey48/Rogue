@@ -1,2 +1,0 @@
-You can change probability for attacks by adding multiple of the same attack in the moveset array. Ex: [a,a,dh] has a 66% chance to attack and 33% chance to use something else.
-Status conditions can be added by increasing the size of the Status array then adding a new case. Don't forget to change the for loop too
